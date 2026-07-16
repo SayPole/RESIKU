@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - ResiKu Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="admin.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <div class="admin-wrapper">
+        <!-- ============================================================ -->
+        <!-- SIDEBAR                                                     -->
+        <!-- ============================================================ -->
+        <aside class="admin-sidebar" id="adminSidebar">
+            <div class="sidebar-brand">
+                <span class="brand-icon">🗑️</span>
+                <span class="brand-text">ResiKu Admin</span>
+            </div>
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-section="dashboard">
+                    <span>📊</span> Dashboard
+                </button>
+                <button class="nav-item" data-section="hero">
+                    <span>🏠</span> Hero Section
+                </button>
+                <button class="nav-item" data-section="valueprops">
+                    <span>💡</span> Value Props
+                </button>
+                <button class="nav-item" data-section="howitworks">
+                    <span>🪜</span> Cara Kerja
+                </button>
+                <button class="nav-item" data-section="pricing">
+                    <span>💰</span> Harga
+                </button>
+                <button class="nav-item" data-section="testimonials">
+                    <span>⭐</span> Testimoni
+                </button>
+                <button class="nav-item" data-section="faq">
+                    <span>❓</span> FAQ
+                </button>
+                <button class="nav-item" data-section="stats">
+                    <span>📈</span> Statistik
+                </button>
+                <button class="nav-item" data-section="features">
+                    <span>⚡</span> Fitur
+                </button>
+                <button class="nav-item" data-section="risk">
+                    <span>🛡️</span> Garansi
+                </button>
+                <button class="nav-item" data-section="badges">
+                    <span>🏆</span> Trust Badges
+                </button>
+                <button class="nav-item" data-section="settings">
+                    <span>⚙️</span> Pengaturan Situs
+                </button>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn-logout" id="logoutBtn">🚪 Logout</button>
+            </div>
+        </aside>
+
+        <!-- ============================================================ -->
+        <!-- MAIN CONTENT                                               -->
+        <!-- ============================================================ -->
+        <main class="admin-main">
+            <!-- Header -->
+            <header class="admin-header">
+                <h1 id="pageTitle">Dashboard</h1>
+                <div class="header-actions">
+                    <button class="btn-save-all" id="saveAllBtn">💾 Save All Changes</button>
+                    <span class="admin-status">🟢 Online</span>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="admin-content">
+                <!-- ========================================================== -->
+                <!-- DASHBOARD SECTION                                         -->
+                <!-- ========================================================== -->
+                <div class="section-content active" id="section-dashboard">
+                    <div class="dashboard-cards">
+                        <div class="dash-card">
+                            <div class="dash-icon">👥</div>
+                            <div class="dash-info">
+                                <span class="dash-number" id="dashUsers">1,250</span>
+                                <span class="dash-label">Total Pengguna</span>
+                            </div>
+                        </div>
+                        <div class="dash-card">
+                            <div class="dash-icon">🏘️</div>
+                            <div class="dash-info">
+                                <span class="dash-number" id="dashComplex">500</span>
+                                <span class="dash-label">Total Komplek</span>
+                            </div>
+                        </div>
+                        <div class="dash-card">
+                            <div class="dash-icon">💰</div>
+                            <div class="dash-info">
+                                <span class="dash-number" id="dashTransactions">8,450</span>
+                                <span class="dash-label">Total Transaksi</span>
+                            </div>
+                        </div>
+                        <div class="dash-card">
+                            <div class="dash-icon">⭐</div>
+                            <div class="dash-info">
+                                <span class="dash-number" id="dashRating">98%</span>
+                                <span class="dash-label">Kepuasan</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dashboard-info">
+                        <h3>📝 Panduan Admin</h3>
+                        <ul>
+                            <li>Klik menu di samping untuk mengubah konten landing page</li>
+                            <li>Klik "💾 Save All Changes" di pojok kanan atas untuk menyimpan SEMUA perubahan sekaligus</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ========================================================== -->
+                <!-- HERO SECTION EDITOR                                       -->
+                <!-- ========================================================== -->
+                <div class="section-content" id="section-hero">
+                    <h2>Edit Hero Section</h2>
+                    <p class="section-desc">Ubah konten utama di bagian hero landing page</p>
+                    
+                    <div class="form-group">
+                        <label>Headline Utama</label>
+                        <input type="text" id="heroHeadline" />
+                    </div>
+                    <div class="form-group">
+                        <label>Subheadline</label>
+                        <textarea id="heroSubheadline" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Tombol CTA Text</label>
+                        <input type="text" id="heroCtaText" />
+                    </div>
+                    <div class="form-group">
+                        <label>Tombol CTA Link</label>
+                        <input type="text" id="heroCtaLink" />
+                    </div>
+                </div>
+
+                <!-- ========================================================== -->
+                <!-- VALUE PROPS EDITOR                                        -->
+                <!-- ========================================================== -->
+                <div class="section-content" id="section-valueprops">
+                    <h2>Edit Value Proposition</h2>
+                    <p class="section-desc">Kelola 4 kartu alasan pakai ResiKu</p>
+                    <div id="valuePropsEditor"></div>
+                    <button class="btn-add-feature-global" id="addValuePropBtn">+ Tambah Value Prop</button>
+                </div>
+
+                <!-- ========================================================== -->
+                <!-- HOW IT WORKS EDITOR                                       -->
+                <!-- ========================================================== -->
+                <div class="section-content" id="section-howitworks">
+                    <h2>Edit Cara Kerja</h2>
+                    <p class="section-desc">Kelola langkah-langkah di section "Cara Kerja"</p>
+                    <div id="howItWorksEditor"></div>
+                    <button class="btn-add-feature-global" id="addStepBtn">+ Tambah Langkah</button>
+                </div>
+
+                <!-- ========================================================== -->
+                <!-- PRICING EDITOR                                            -->
+                <!-- ========================================================== -->
+                <div class="section-content" id="section-pricing">
+                    <h2>Edit Harga & Paket</h2>
+                    <p class="section-desc">Kelola paket langganan yang ditampilkan di landing page</p>
+                    
+                    <div class="pricing-editor" id="pricingEditor">
+                        <!-- Akan diisi JavaScript -->
+                    </div>
+                    
+                    <button class="btn-add-plan" id="addPlanBtn">+ Tambah Paket</button>
+                </div>
+
+                <!-- ========================================================== -->
+                <!-- TESTIMONIALS EDITOR                                       -->
+                <!-- ========================================================== -->
+                <div class="section-content" id="section-testimonials">
+                    <h2>Edit Testimoni</h2>
+                    <p class="section-desc">Kelola testimoni pengguna yang ditampilkan di landing page</p>
+                    
+                    <div id="testimonialsEditor">
+                        <!-- Akan diisi JavaScript -->
+                    </div>
+                    
+                    <button class="btn-add-testimonial" id="addTestimonialBtn">+ Tambah Testimoni</button>
+                </div>
+
+                <!-- ========================================================== -->
+                <!-- FAQ EDITOR                                                -->
+                <!-- ========================================================== -->
+                <div class="section-content" id="section-faq">
+                    <h2>Edit FAQ</h2>
+                    <p class="section-desc">Kelola pertanyaan umum yang ditampilkan di landing page</p>
+                    
+                    <div id="faqEditor">
+                        <!-- Akan diisi JavaScript -->
+                    </div>
+                    
+                    <button class="btn-add-faq" id="addFaqBtn">+ Tambah FAQ</button>
+                </div>
+
+                <!-- ========================================================== -->
+                <!-- STATISTICS EDITOR                                         -->
+                <!-- ========================================================== -->
+                <div class="section-content" id="section-stats">
+                    <h2>Edit Statistik</h2>
+                    <p class="section-desc">Ubah angka statistik yang ditampilkan di landing page</p>
+                    
+                    <div class="form-group">
+                        <label>Total Pengguna</label>
+                        <input type="number" id="statsUsers" />
+                    </div>
+                    <div class="form-group">
+                        <label>Total Komplek</label>
+                        <input type="number" id="statsComplex" />
+                    </div>
+                    <div class="form-group">
+                        <label>Total Transaksi</label>
+                        <input type="number" id="statsTransactions" />
+                    </div>
+                    <div class="form-group">
+                        <label>Kepuasan (%)</label>
+                        <input type="number" id="statsSatisfaction" min="0" max="100" />
+                    </div>
+                </div>
+
+                <!-- ========================================================== -->
+                <!-- FEATURES EDITOR                                           -->
+                <!-- ========================================================== -->
+                <div class="section-content" id="section-features">
+                    <h2>Edit Fitur</h2>
+                    <p class="section-desc">Kelola fitur unggulan yang ditampilkan di landing page</p>
+                    
+                    <div id="featuresEditor">
+                        <!-- Akan diisi JavaScript -->
+                    </div>
+                    
+                    <button class="btn-add-feature-global" id="addFeatureBtn">+ Tambah Fitur</button>
+                </div>
+
+                <!-- ========================================================== -->
+                <!-- RISK / GARANSI EDITOR                                     -->
+                <!-- ========================================================== -->
+                <div class="section-content" id="section-risk">
+                    <h2>Edit Garansi</h2>
+                    <p class="section-desc">Kelola konten garansi yang ditampilkan di landing page</p>
+                    
+                    <div id="riskEditor">
+                        <!-- Akan diisi JavaScript -->
+                    </div>
+                    
+                    <button class="btn-add-risk" id="addRiskBtn">+ Tambah Garansi</button>
+                </div>
+
+                <!-- ========================================================== -->
+                <!-- TRUST BADGES EDITOR                                       -->
+                <!-- ========================================================== -->
+                <div class="section-content" id="section-badges">
+                    <h2>Edit Trust Badges</h2>
+                    <p class="section-desc">Kelola badge kepercayaan (mis. "Terpercaya 500+ Komplek")</p>
+                    <div id="badgesEditor"></div>
+                    <button class="btn-add-feature-global" id="addBadgeBtn">+ Tambah Badge</button>
+                </div>
+
+                <!-- ========================================================== -->
+                <!-- SITE SETTINGS EDITOR                                      -->
+                <!-- ========================================================== -->
+                <div class="section-content" id="section-settings">
+                    <h2>Pengaturan Situs</h2>
+                    <p class="section-desc">Nomor WA, kontak, alamat, dan social media di footer</p>
+                    <div class="form-group">
+                        <label>Nomor WhatsApp (format: 62812xxxxxxx)</label>
+                        <input type="text" id="settingsWA" placeholder="6281234567890" />
+                    </div>
+                    <div class="form-group">
+                        <label>Email Kontak</label>
+                        <input type="text" id="settingsEmail" />
+                    </div>
+                    <div class="form-group">
+                        <label>Telepon</label>
+                        <input type="text" id="settingsPhone" />
+                    </div>
+                    <div class="form-group">
+                        <label>Alamat</label>
+                        <input type="text" id="settingsAddress" />
+                    </div>
+                    <div class="form-group">
+                        <label>Instagram URL</label>
+                        <input type="text" id="settingsIG" />
+                    </div>
+                    <div class="form-group">
+                        <label>Twitter/X URL</label>
+                        <input type="text" id="settingsTwitter" />
+                    </div>
+                    <div class="form-group">
+                        <label>LinkedIn URL</label>
+                        <input type="text" id="settingsLinkedIn" />
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="admin.js"></script>
+</body>
+</html>

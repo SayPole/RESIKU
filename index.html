@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ResiKu — Kelola Iuran Sampah Komplek</title>
+    <meta name="description" content="ResiKu membantu pengurus komplek, RT/RW, dan developer perumahan mengelola iuran sampah secara digital, transparan, dan selalu ada resinya." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Langsung ke konten</a>
+
+    <!-- ============================================================ -->
+    <!-- 1. NAVBAR                                                     -->
+    <!-- ============================================================ -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <span class="logo-mark">🧾</span>
+                <span class="logo-text">ResiKu</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#features">Fitur</a></li>
+                <li><a href="#howItWorks">Cara Kerja</a></li>
+                <li><a href="#pricing">Harga</a></li>
+                <li><a href="#testimonials">Testimoni</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li class="nav-divider" aria-hidden="true"></li>
+                <li><a href="login.html" class="nav-login">Masuk</a></li>
+                <li><a href="#pricing" class="nav-cta">Mulai Gratis</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Buka menu" aria-expanded="false" aria-controls="navMenu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </nav>
+
+    <main id="main">
+    <!-- ============================================================ -->
+    <!-- 2. HERO                                                       -->
+    <!-- ============================================================ -->
+    <section class="hero" id="hero">
+        <div class="hero-blob" aria-hidden="true"></div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <p class="hero-badge animate-on-scroll">Untuk Pengurus RT/RW & Komplek</p>
+                <h1 class="hero-title animate-on-scroll" id="heroTitle">
+                    Iuran Sampah Komplek,<br />
+                    <span class="highlight">Selalu Ada Resinya.</span>
+                </h1>
+                <p class="hero-desc animate-on-scroll" id="heroDesc">
+                    <strong>ResiKu</strong> merapikan tagihan, pembayaran, dan laporan kas iuran sampah dalam satu tempat — <strong>digital, real-time, dan bisa dicek warga kapan saja.</strong> Tidak ada lagi catatan di buku tulis yang gampang hilang.
+                </p>
+                <div class="hero-buttons animate-on-scroll">
+                    <a href="#pricing" class="btn-primary" id="heroCtaBtn">Mulai Gratis 14 Hari</a>
+                    <a href="#howItWorks" class="btn-outline">Lihat Cara Kerja</a>
+                </div>
+                <a href="#demo" class="hero-demo-link animate-on-scroll">Atau jadwalkan demo langsung dengan tim kami →</a>
+
+                <div class="hero-stats animate-on-scroll">
+                    <div class="stat-item">
+                        <span class="stat-number js-counter" data-target="1250" data-suffix="+">0</span>
+                        <span class="stat-label">Pengguna aktif</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number js-counter" data-target="500" data-suffix="+">0</span>
+                        <span class="stat-label">Komplek</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number js-counter" data-target="98" data-suffix="%">0</span>
+                        <span class="stat-label">Kepuasan</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual animate-on-scroll">
+                <div class="receipt-machine">
+                    <div class="printer-slot"><span></span></div>
+                    <div class="receipt-paper">
+                        <div class="receipt-head">
+                            <span class="receipt-logo">🧾 RESIKU</span>
+                            <span class="receipt-sub">STRUK IURAN DIGITAL</span>
+                        </div>
+                        <div class="receipt-rule"></div>
+                        <dl class="receipt-lines">
+                            <div class="receipt-row"><dt>No. Resi</dt><dd>088/RSK/VII/26</dd></div>
+                            <div class="receipt-row"><dt>Unit</dt><dd>Blok C No. 12</dd></div>
+                        </dl>
+                        <div class="receipt-rule"></div>
+                        <dl class="receipt-lines">
+                            <div class="receipt-row"><dt>Iuran Sampah — Jul 2026</dt><dd>Rp 50.000</dd></div>
+                            <div class="receipt-row"><dt>Status</dt><dd class="paid">LUNAS</dd></div>
+                        </dl>
+                        <div class="receipt-rule"></div>
+                        <dl class="receipt-lines">
+                            <div class="receipt-row receipt-total"><dt>Kas Komplek</dt><dd>Rp 12.450.000</dd></div>
+                        </dl>
+                        <p class="receipt-foot">Dibayar via QRIS · 15 Jul 2026</p>
+                        <div class="receipt-stamp" aria-hidden="true">LUNAS</div>
+                    </div>
+                </div>
+                <div class="floating-chip chip-1">🔔 Pengingat terkirim</div>
+                <div class="floating-chip chip-2">📊 Laporan siap</div>
+            </div>
+        </div>
+        <svg class="hero-edge" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 30 C 240 70, 480 0, 720 30 C 960 60, 1200 10, 1440 40 L1440 80 L0 80 Z" fill="var(--paper-soft)"/>
+        </svg>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 3. VALUE PROPOSITION                                          -->
+    <!-- ============================================================ -->
+    <section class="value-props" id="valueProps">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <p class="eyebrow">Kenapa ResiKu</p>
+                <h2>Kenapa Pengelola Komplek Pilih ResiKu?</h2>
+                <p class="section-desc">Solusi lengkap untuk pengelolaan iuran komplek yang lebih profesional</p>
+            </div>
+            <div class="props-grid" id="propsGrid"></div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 4. HOW IT WORKS                                               -->
+    <!-- ============================================================ -->
+    <section class="how-it-works" id="howItWorks">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <p class="eyebrow">Cara Kerja</p>
+                <h2>Tiga Langkah Sampai Kas Rapi</h2>
+                <p class="section-desc">Urutan sederhana dari daftar sampai laporan siap dicetak</p>
+            </div>
+            <div class="steps" id="stepsWrapper"></div>
+            <div class="steps-cta animate-on-scroll">
+                <a href="#pricing" class="btn-primary">Mulai Gratis 14 Hari</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 5. FEATURES                                                   -->
+    <!-- ============================================================ -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <p class="eyebrow">Fitur</p>
+                <h2>Fitur Unggulan ResiKu</h2>
+                <p class="section-desc">Lengkap untuk kebutuhan pengelolaan iuran komplek Anda</p>
+            </div>
+            <div class="features-grid" id="featuresGrid"></div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 6. RISK REVERSAL / GARANSI                                    -->
+    <!-- ============================================================ -->
+    <section class="risk-reversal" id="riskReversal">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <p class="eyebrow">Garansi</p>
+                <h2>Garansi ResiKu</h2>
+            </div>
+            <div class="risk-wrapper" id="riskWrapper"></div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 7. PRICING                                                    -->
+    <!-- ============================================================ -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <p class="eyebrow">Harga</p>
+                <h2>Pilihan Harga</h2>
+                <p class="section-desc">Pilih paket yang sesuai dengan kebutuhan komplek Anda</p>
+            </div>
+            <div class="pricing-grid" id="pricingGrid"></div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 8. TESTIMONIALS                                               -->
+    <!-- ============================================================ -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <p class="eyebrow">Testimoni</p>
+                <h2>Apa Kata Pengelola Komplek</h2>
+                <p class="section-desc">Cerita dari pengurus komplek yang sudah menggunakan ResiKu</p>
+            </div>
+            <div class="testimonials-grid" id="testimonialsGrid"></div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 9. TRUST BADGES                                               -->
+    <!-- ============================================================ -->
+    <section class="trust-badges">
+        <div class="container">
+            <div class="badges-wrapper" id="badgesWrapper"></div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 10. STATISTICS                                                -->
+    <!-- ============================================================ -->
+    <section class="statistics" id="statistics">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stats-card animate-on-scroll">
+                    <span class="stats-number js-counter" id="statUsers" data-target="1250" data-suffix="+">0</span>
+                    <span class="stats-label">Total Pengguna</span>
+                </div>
+                <div class="stats-card animate-on-scroll" style="animation-delay:0.08s">
+                    <span class="stats-number js-counter" id="statTransactions" data-target="8450" data-suffix="+">0</span>
+                    <span class="stats-label">Total Transaksi</span>
+                </div>
+                <div class="stats-card animate-on-scroll" style="animation-delay:0.16s">
+                    <span class="stats-number js-counter" id="statSatisfaction" data-target="98" data-suffix="%">0</span>
+                    <span class="stats-label">Kepuasan</span>
+                </div>
+                <div class="stats-card animate-on-scroll" style="animation-delay:0.24s">
+                    <span class="stats-number js-counter" id="statComplex" data-target="500" data-suffix="+">0</span>
+                    <span class="stats-label">Komplek Bergabung</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 11. FAQ                                                       -->
+    <!-- ============================================================ -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <p class="eyebrow">FAQ</p>
+                <h2>Pertanyaan Umum</h2>
+                <p class="section-desc">Hal-hal yang sering ditanyakan tentang ResiKu</p>
+            </div>
+            <div class="faq-list" id="faqList"></div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 12. DEMO / KONTAK                                             -->
+    <!-- ============================================================ -->
+    <section class="demo-section" id="demo">
+        <div class="container">
+            <div class="demo-wrapper animate-on-scroll">
+                <div class="demo-header">
+                    <p class="eyebrow">Demo</p>
+                    <h2>Mau Lihat Demo ResiKu?</h2>
+                    <p>Isi data di bawah, tim kami akan menghubungi Anda untuk demo gratis.</p>
+                </div>
+                <form class="demo-form" id="demoForm" novalidate>
+                    <div class="demo-form-row">
+                        <div class="form-group">
+                            <label for="demoName">Nama Lengkap</label>
+                            <input type="text" id="demoName" placeholder="Contoh: Ahmad Budi" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="demoEmail">Email</label>
+                            <input type="email" id="demoEmail" placeholder="contoh@email.com" required />
+                        </div>
+                    </div>
+                    <div class="demo-form-row">
+                        <div class="form-group">
+                            <label for="demoPhone">Nomor WhatsApp</label>
+                            <input type="tel" id="demoPhone" placeholder="0812-3456-7890" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="demoComplex">Nama Komplek</label>
+                            <input type="text" id="demoComplex" placeholder="Contoh: Griya Indah" />
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="demoMessage">Pesan (Opsional)</label>
+                        <textarea id="demoMessage" rows="3" placeholder="Tanyakan sesuatu tentang ResiKu..."></textarea>
+                    </div>
+                    <p class="demo-form-msg" id="demoFormMsg" role="alert" hidden></p>
+                    <button type="submit" class="btn-primary btn-large">Minta Demo Sekarang</button>
+                    <p class="demo-note">Tanpa komitmen. Gratis 14 hari uji coba.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 13. CTA                                                       -->
+    <!-- ============================================================ -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-wrapper animate-on-scroll">
+                <h2>Siap Kelola Iuran Lebih Mudah?</h2>
+                <p>Bergabung dengan 1.250+ pengurus komplek & 500+ komplek yang sudah pakai ResiKu.</p>
+                <a href="#pricing" class="btn-primary btn-large">Mulai Gratis 14 Hari</a>
+                <span class="cta-sub">Tidak perlu kartu kredit</span>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- ============================================================ -->
+    <!-- 14. FOOTER                                                    -->
+    <!-- ============================================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <span class="logo-mark">🧾</span>
+                        <span class="logo-text">ResiKu</span>
+                    </a>
+                    <p>Aplikasi manajemen iuran sampah untuk pengurus komplek, RT/RW, dan developer perumahan.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+                        <a href="#" class="social-link" aria-label="Twitter/X">🐦</a>
+                        <a href="#" class="social-link" aria-label="WhatsApp">📱</a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Produk</h4>
+                    <a href="#features">Fitur</a>
+                    <a href="#pricing">Harga</a>
+                    <a href="#testimonials">Testimoni</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Perusahaan</h4>
+                    <a href="#">Tentang Kami</a>
+                    <a href="#">Karir</a>
+                    <a href="#demo">Demo</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Kontak</h4>
+                    <a href="mailto:hello@resiku.id">📧 hello@resiku.id</a>
+                    <a href="tel:+6281234567890">📞 +62 812 3456 7890</a>
+                    <a href="#">📍 Jakarta, Indonesia</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ResiKu. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Kebijakan Privasi</a>
+                    <a href="#">Syarat & Ketentuan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================ -->
+    <!-- 15. FLOATING SUPPORT                                          -->
+    <!-- ============================================================ -->
+    <div class="floating-support">
+        <button class="support-btn" id="supportBtn" aria-label="Hubungi kami via WhatsApp">💬</button>
+        <div class="support-tooltip">Ada pertanyaan? Chat kami!</div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
